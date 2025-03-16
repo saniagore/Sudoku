@@ -66,7 +66,7 @@ public class GameController {
         sudokuGenerator = new SudokuGenerator();
         sudokuBoard = sudokuGenerator.generateBoard();
 
-        updateView();
+        initialTable();
     }
 
     private void initializeCellsMatrix() {
@@ -76,14 +76,12 @@ public class GameController {
         cells[1][1] = cell4;
         cells[2][0] = cell5;
         cells[2][1] = cell6;
-
         cells[0][2] = cell7;
         cells[0][3] = cell8;
         cells[1][2] = cell9;
         cells[1][3] = cell10;
         cells[2][2] = cell11;
         cells[2][3] = cell12;
-
         cells[0][4] = cell13;
         cells[0][5] = cell14;
         cells[1][4] = cell15;
@@ -111,16 +109,18 @@ public class GameController {
         cells[5][5] = cell36;
     }
 
-    private void updateView() {
+    private void initialTable() {
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 6; j++) {
                 if (sudokuBoard.getCell(i, j) != 0) {
                     cells[i][j].setText(String.valueOf(sudokuBoard.getCell(i, j)));
+                    cells[i][j].setEditable(false); 
+                    cells[i][j].setStyle("-fx-control-inner-background: #ADD8E6;"); 
                 } else {
                     cells[i][j].setText("");
                 }
             }
         }
     }
-    
+
 }
