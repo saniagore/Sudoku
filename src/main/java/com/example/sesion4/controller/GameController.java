@@ -1,11 +1,12 @@
 package com.example.sesion4.controller;
 
+import com.example.sesion4.model.SudokuBoard;
+import com.example.sesion4.model.SudokuGenerator;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
 public class GameController {
-
-    // Inyectar los 36 TextField usando fx:id
     @FXML private TextField cell1;
     @FXML private TextField cell2;
     @FXML private TextField cell3;
@@ -43,55 +44,70 @@ public class GameController {
     @FXML private TextField cell35;
     @FXML private TextField cell36;
 
-    /**
-     * Método llamado automáticamente después de que se carga el FXML.
-     */
+    private SudokuGenerator sudokuGenerator;
+    private SudokuBoard sudokuBoard;
+
     @FXML
     public void initialize() {
-        // Aquí puedes inicializar el tablero y actualizar la vista
+
+        sudokuGenerator = new SudokuGenerator();
+        sudokuBoard = sudokuGenerator.generateBoard();
+
         updateView();
     }
 
-    /**
-     * Actualiza la vista con los valores del tablero.
-     */
     private void updateView() {
-        // Ejemplo: Asignar un valor a cada celda
-        cell1.setText("1");
-        cell2.setText("2");
-        cell3.setText("3");
-        cell4.setText("4");
-        cell5.setText("5");
-        cell6.setText("6");
-        cell7.setText("7");
-        cell8.setText("8");
-        cell9.setText("9");
-        cell10.setText("10");
-        cell11.setText("11");
-        cell12.setText("12");
-        cell13.setText("13");
-        cell14.setText("14");
-        cell15.setText("15");
-        cell16.setText("16");
-        cell17.setText("17");
-        cell18.setText("18");
-        cell19.setText("19");
-        cell20.setText("20");
-        cell21.setText("21");
-        cell22.setText("22");
-        cell23.setText("23");
-        cell24.setText("24");
-        cell25.setText("25");
-        cell26.setText("26");
-        cell27.setText("27");
-        cell28.setText("28");
-        cell29.setText("29");
-        cell30.setText("30");
-        cell31.setText("31");
-        cell32.setText("32");
-        cell33.setText("33");
-        cell34.setText("34");
-        cell35.setText("35");
-        cell36.setText("36");
+        int[] board = sudokuBoard.getBoard();
+        for (int i = 0; i < board.length; i++) {
+            TextField textField = getTextFieldByIndex(i);
+            if (textField != null) {
+                if(board[i]==0){
+                }else{
+                    textField.setText(String.valueOf(board[i]));
+                }
+            }
+        }
+    }
+    
+    private TextField getTextFieldByIndex(int index) {
+        switch (index) {
+            case 0: return cell1;
+            case 1: return cell2;
+            case 2: return cell3;
+            case 3: return cell4;
+            case 4: return cell5;
+            case 5: return cell6;
+            case 6: return cell7;
+            case 7: return cell8;
+            case 8: return cell9;
+            case 9: return cell10;
+            case 10: return cell11;
+            case 11: return cell12;
+            case 12: return cell13;
+            case 13: return cell14;
+            case 14: return cell15;
+            case 15: return cell16;
+            case 16: return cell17;
+            case 17: return cell18;
+            case 18: return cell19;
+            case 19: return cell20;
+            case 20: return cell21;
+            case 21: return cell22;
+            case 22: return cell23;
+            case 23: return cell24;
+            case 24: return cell25;
+            case 25: return cell26;
+            case 26: return cell27;
+            case 27: return cell28;
+            case 28: return cell29;
+            case 29: return cell30;
+            case 30: return cell31;
+            case 31: return cell32;
+            case 32: return cell33;
+            case 33: return cell34;
+            case 34: return cell35;
+            case 35: return cell36;
+            default: return null;
+        }
     }
 }

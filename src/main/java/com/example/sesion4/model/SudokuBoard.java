@@ -1,25 +1,25 @@
 package com.example.sesion4.model;
 
 public class SudokuBoard {
-    private int[][] board;
+    private int[] board;
 
     public SudokuBoard() {
-        board = new int[6][6];
+        board = new int[36];
     }
 
-    public int getCell(int row, int col) {
-        return board[row][col];
+    public int getCell(int cell) {
+        return board[cell];
     }
 
-    public void setCell(int row, int col, int value) {
-        board[row][col] = value;
+    public void setCell(int cell, int value) {
+        board[cell] = value;
     }
 
-    public int[][] getBoard() {
+    public int[] getBoard() {
         return board;
     }
 
-    public void setBoard(int[][] board) {
+    public void setBoard(int[] board) {
         this.board = board;
     }
 }
