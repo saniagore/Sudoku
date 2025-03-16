@@ -8,7 +8,7 @@ import javafx.scene.image.Image;
 
 import java.io.IOException;
 
-public class GameV extends Stage { 
+public class GameV extends Stage {
 
     private Scene scene;
 
