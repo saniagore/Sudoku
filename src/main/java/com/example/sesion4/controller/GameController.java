@@ -2,11 +2,13 @@ package com.example.sesion4.controller;
 
 import com.example.sesion4.model.SudokuBoard;
 import com.example.sesion4.model.SudokuGenerator;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
 public class GameController {
+    // Matriz de 6x6 para los TextField
+    private TextField[][] cells = new TextField[6][6];
+
     @FXML private TextField cell1;
     @FXML private TextField cell2;
     @FXML private TextField cell3;
@@ -44,11 +46,22 @@ public class GameController {
     @FXML private TextField cell35;
     @FXML private TextField cell36;
 
+    private TextField[] allCells;
     private SudokuGenerator sudokuGenerator;
     private SudokuBoard sudokuBoard;
 
     @FXML
     public void initialize() {
+        allCells = new TextField[] {
+            cell1, cell2, cell3, cell4, cell5, cell6,
+            cell7, cell8, cell9, cell10, cell11, cell12,
+            cell13, cell14, cell15, cell16, cell17, cell18,
+            cell19, cell20, cell21, cell22, cell23, cell24,
+            cell25, cell26, cell27, cell28, cell29, cell30,
+            cell31, cell32, cell33, cell34, cell35, cell36
+        };
+
+        initializeCellsMatrix();
 
         sudokuGenerator = new SudokuGenerator();
         sudokuBoard = sudokuGenerator.generateBoard();
@@ -56,58 +69,58 @@ public class GameController {
         updateView();
     }
 
+    private void initializeCellsMatrix() {
+        cells[0][0] = cell1;
+        cells[0][1] = cell2;
+        cells[1][0] = cell3;
+        cells[1][1] = cell4;
+        cells[2][0] = cell5;
+        cells[2][1] = cell6;
+
+        cells[0][2] = cell7;
+        cells[0][3] = cell8;
+        cells[1][2] = cell9;
+        cells[1][3] = cell10;
+        cells[2][2] = cell11;
+        cells[2][3] = cell12;
+
+        cells[0][4] = cell13;
+        cells[0][5] = cell14;
+        cells[1][4] = cell15;
+        cells[1][5] = cell16;
+        cells[2][4] = cell17;
+        cells[2][5] = cell18;
+
+        cells[3][0] = cell19;
+        cells[3][1] = cell20;
+        cells[4][0] = cell21;
+        cells[4][1] = cell22;
+        cells[5][0] = cell23;
+        cells[5][1] = cell24;
+        cells[3][2] = cell25;
+        cells[3][3] = cell26;
+        cells[4][2] = cell27;
+        cells[4][3] = cell28;
+        cells[5][2] = cell29;
+        cells[5][3] = cell30;
+        cells[3][4] = cell31;
+        cells[3][5] = cell32;
+        cells[4][4] = cell33;
+        cells[4][5] = cell34;
+        cells[5][4] = cell35;
+        cells[5][5] = cell36;
+    }
+
     private void updateView() {
-        int[] board = sudokuBoard.getBoard();
-        for (int i = 0; i < board.length; i++) {
-            TextField textField = getTextFieldByIndex(i);
-            if (textField != null) {
-                if(board[i]==0){
-                }else{
-                    textField.setText(String.valueOf(board[i]));
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 6; j++) {
+                if (sudokuBoard.getCell(i, j) != 0) {
+                    cells[i][j].setText(String.valueOf(sudokuBoard.getCell(i, j)));
+                } else {
+                    cells[i][j].setText("");
                 }
             }
         }
     }
     
-    private TextField getTextFieldByIndex(int index) {
-        switch (index) {
-            case 0: return cell1;
-            case 1: return cell2;
-            case 2: return cell3;
-            case 3: return cell4;
-            case 4: return cell5;
-            case 5: return cell6;
-            case 6: return cell7;
-            case 7: return cell8;
-            case 8: return cell9;
-            case 9: return cell10;
-            case 10: return cell11;
-            case 11: return cell12;
-            case 12: return cell13;
-            case 13: return cell14;
-            case 14: return cell15;
-            case 15: return cell16;
-            case 16: return cell17;
-            case 17: return cell18;
-            case 18: return cell19;
-            case 19: return cell20;
-            case 20: return cell21;
-            case 21: return cell22;
-            case 22: return cell23;
-            case 23: return cell24;
-            case 24: return cell25;
-            case 25: return cell26;
-            case 26: return cell27;
-            case 27: return cell28;
-            case 28: return cell29;
-            case 29: return cell30;
-            case 30: return cell31;
-            case 31: return cell32;
-            case 32: return cell33;
-            case 33: return cell34;
-            case 34: return cell35;
-            case 35: return cell36;
-            default: return null;
-        }
-    }
 }
