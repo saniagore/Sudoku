@@ -8,9 +8,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        // Crear una instancia de GameV (que es una ventana)
         GameV gameView = new GameV();
-        gameView.show(); // Mostrar la ventana
+        gameView.show(); 
     }
 
     public static void main(String[] args) {

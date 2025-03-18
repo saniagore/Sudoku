@@ -9,7 +9,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
 public class GameController {
-    // Matriz de 6x6 para los TextField
     private TextField[][] cells = new TextField[6][6];
 
     @FXML private TextField cell1;

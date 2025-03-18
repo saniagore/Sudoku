@@ -25,7 +25,6 @@ public class VerifySudoku {
         for(int i = 0; i<6; i++){
             columnValues[i] = board.getCell(i, colum);
         }
-
         return columnValues;
     }
 
@@ -51,6 +50,15 @@ public class VerifySudoku {
 
         }
         return count;
+    }
+
+    public boolean verifyMiniBoard(int value){
+
+        int [] values = {1,2,3,4,5,6};
+
+
+      
+        return true;
     }
 
 }

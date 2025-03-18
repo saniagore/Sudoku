@@ -21,14 +21,14 @@ public class SudokuGenerator {
         int colum = 0;
         int value = 0;
 
-        for(int j = 0; j<2; j++){
+        for(int j = 0; j<3; j++){
 
-            for(int i = 0; i<3; i++){
+            for(int i = 0; i<2; i++){
 
                 for(int k=0; k<2; k++){
                     do{
-                        row = getRandomNumber(j*3, 2+j*3);
-                        colum = getRandomNumber(i*2, 2*i+1);
+                        row = getRandomNumber(j*2, j*2+1);
+                        colum = getRandomNumber(i*3,i*3+2);
                         value = getRandomNumber(1, 6);
                         
                         if(board.getCell(row, colum)==0){
