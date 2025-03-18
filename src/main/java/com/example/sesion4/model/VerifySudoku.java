@@ -4,34 +4,18 @@ public class VerifySudoku {
     private SudokuBoard board;
 
     public VerifySudoku(){
-        SudokuBoard board = new SudokuBoard();
+        this.board = new SudokuBoard();
     }
     
     public boolean verify(int value, int row, int colum){
         
-        int count = 0;
         int[] columnValues = verifyColumnBoard(colum);
         int[] rowValues = verifyRowBoard(row);
 
-
-        for(int i = 0; i<6;i++){
-            if(value == columnValues[i]){
-                count++;
-            }
-            if(count>=2){
-                return false;
-            }
+        if(counter(value, rowValues)>=2 || counter(value, columnValues)>=2){
+            return false;
         }
 
-        count = 0;
-        for(int i = 0; i<6;i++){
-            if(value == rowValues[i]){
-                count++;
-            }
-            if(count>=2){
-                return false;
-            }
-        }
         return true;
     }
 
@@ -55,6 +39,18 @@ public class VerifySudoku {
 
     public void setBoard(SudokuBoard board){
         this.board = board;
+    }
+
+    public int counter (int value, int [] array){
+        int count = 0;
+
+        for(int i = 0; i<6;i++){
+            if(value == array[i]){
+                count++;
+            }
+
+        }
+        return count;
     }
 
 }
