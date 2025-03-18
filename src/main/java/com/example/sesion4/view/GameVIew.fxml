@@ -220,7 +220,7 @@
    <right>
       <Pane fx:id="rightPane" prefHeight="377.0" prefWidth="71.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="clueBottom" layoutX="9.0" layoutY="314.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="53.0" text="Pista" />
+            <Button fx:id="clueButton" layoutX="9.0" layoutY="314.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="53.0" text="Pista" />
          </children>
       </Pane>
    </right>

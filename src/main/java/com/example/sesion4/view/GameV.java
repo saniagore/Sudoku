@@ -13,13 +13,16 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
+
 import java.io.IOException;
+import javafx.scene.control.Button;
 
 public class GameV extends Stage {
 
     private Scene scene;
-    private GridPane gridPane; // Referencia al GridPane del FXML
-    private Pane rightPane;    // Referencia al Pane derecho del FXML
+    private GridPane gridPane;
+    private Pane rightPane;
+    private Button clueButton;
 
     public GameV() {
         try {
@@ -28,9 +31,12 @@ public class GameV extends Stage {
             scene = new Scene(root);
             gridPane = (GridPane) scene.lookup("#gridPane");
             rightPane = (Pane) scene.lookup("#rightPane");
+            clueButton = (Button) rightPane.lookup("#clueButton");
+
+            AnimatedButton animatedButton = new AnimatedButton(clueButton);
             setBackgroundImage(gridPane, "/com/example/sesion4/bgsudoku.png");
             setBackgroundImage(rightPane, "/com/example/sesion4/bgright.jpg");
-
+            
             initStage();
         } catch (IOException e) {
             e.printStackTrace();
@@ -65,5 +71,9 @@ public class GameV extends Stage {
             region.setBackground(background);
         } catch (NullPointerException e) {
         }
+    }
+
+    public Button getClueButton(){
+        return clueButton;
     }
 }
