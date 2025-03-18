@@ -30,7 +30,6 @@ public class SudokuGenerator {
                         row = getRandomNumber(j*2, j*2+1);
                         colum = getRandomNumber(i*3,i*3+2);
                         value = getRandomNumber(1, 6);
-                        
                         if(board.getCell(row, colum)==0){
                             board.setCell(row, colum, value);
                             verify.setBoard(board);
