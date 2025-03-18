@@ -35,7 +35,7 @@ public class SudokuGenerator {
                             board.setCell(row, colum, value);
                             verify.setBoard(board);
 
-                            if(verify.verify(value, row, colum) ){
+                            if(verify.verify(value, row, colum) && verify.verifyMiniBoard(value, row, colum)){
                                 break;
                             }else{
                                 board.setCell(row, colum, 0);

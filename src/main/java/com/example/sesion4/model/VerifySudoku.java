@@ -52,13 +52,21 @@ public class VerifySudoku {
         return count;
     }
 
-    public boolean verifyMiniBoard(int value){
+    public boolean verifyMiniBoard(int value, int row, int colum) {
+        int submatrizFila = row / 2; 
+        int submatrizColumna = colum / 3; 
+        int count = 0;
+        for (int i = submatrizFila * 2; i < (submatrizFila * 2) + 2; i++) { 
+            for (int j = submatrizColumna * 3; j < (submatrizColumna * 3) + 3; j++) { 
+                if (board.getCell(i, j) == value) {
+                    count++;
+                    if (count > 1) {
+                        return false;
+                    }
+                }
+            }
+        }
 
-        int [] values = {1,2,3,4,5,6};
-
-
-      
         return true;
     }
-
 }

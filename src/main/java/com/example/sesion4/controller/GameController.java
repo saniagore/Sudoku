@@ -67,39 +67,43 @@ public class GameController {
     private void initializeCellsMatrix() {
         cells[0][0] = cell1;
         cells[0][1] = cell2;
+        cells[0][2] = cell7;
         cells[1][0] = cell3;
         cells[1][1] = cell4;
-        cells[2][0] = cell5;
-        cells[2][1] = cell6;
-        cells[0][2] = cell7;
-        cells[0][3] = cell8;
         cells[1][2] = cell9;
-        cells[1][3] = cell10;
-        cells[2][2] = cell11;
-        cells[2][3] = cell12;
+
+        cells[0][3] = cell8;
         cells[0][4] = cell13;
         cells[0][5] = cell14;
+        cells[1][3] = cell10;
         cells[1][4] = cell15;
         cells[1][5] = cell16;
-        cells[2][4] = cell17;
-        cells[2][5] = cell18;
 
+        cells[2][0] = cell5;
+        cells[2][1] = cell6;
+        cells[2][2] = cell11;
         cells[3][0] = cell19;
         cells[3][1] = cell20;
-        cells[4][0] = cell21;
-        cells[4][1] = cell22;
-        cells[5][0] = cell23;
-        cells[5][1] = cell24;
         cells[3][2] = cell25;
+
+        cells[2][3] = cell12;
+        cells[2][4] = cell17;
+        cells[2][5] = cell18;
         cells[3][3] = cell26;
-        cells[4][2] = cell27;
-        cells[4][3] = cell28;
-        cells[5][2] = cell29;
-        cells[5][3] = cell30;
         cells[3][4] = cell31;
         cells[3][5] = cell32;
+    
+        cells[4][0] = cell21;
+        cells[4][1] = cell22;
+        cells[4][2] = cell27;
+        cells[5][0] = cell23;
+        cells[5][1] = cell24;
+        cells[5][2] = cell29;
+    
+        cells[4][3] = cell28;
         cells[4][4] = cell33;
         cells[4][5] = cell34;
+        cells[5][3] = cell30;
         cells[5][4] = cell35;
         cells[5][5] = cell36;
     }

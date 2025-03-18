@@ -19,4 +19,9 @@ public class SudokuAdapter implements SudokuLogic {
     public boolean verify(int value, int row, int column) {
         return verifySudoku.verify(value, row, column);
     }
+
+    @Override
+    public boolean verifyMiniBoard(int value, int row, int colum){
+        return verifySudoku.verifyMiniBoard(value, row, colum);
+    }
 }
