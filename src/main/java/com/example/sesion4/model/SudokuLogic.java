@@ -4,5 +4,5 @@ public interface SudokuLogic {
 
     SudokuBoard generateBoard();
 
-    SudokuBoard verify();
+    boolean verify(int value, int row, int column);
 }
