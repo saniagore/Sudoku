@@ -5,7 +5,6 @@ import com.example.sesion4.model.SudokuBoard;
 import com.example.sesion4.model.SudokuGenerator;
 import com.example.sesion4.model.SudokuLogic;
 import com.example.sesion4.model.VerifySudoku;
-import com.example.sesion4.view.AnimatedButton;
 import com.example.sesion4.view.GameV;
 
 import javafx.event.ActionEvent;
@@ -52,14 +51,12 @@ public class GameController {
     @FXML private TextField cell35;
     @FXML private TextField cell36;
 
-    private AnimatedButton clueButton;
     private GameV view;
 
     private SudokuLogic sudokuLogic;
     private SudokuBoard sudokuBoard;
 
-    public GameController(AnimatedButton clueButton, GameV view){
-        this.clueButton = clueButton;
+    public GameController(GameV view){
         this.view = view;
     }
     public GameController() {
@@ -135,10 +132,6 @@ public class GameController {
             }
         }
     }
-    
-    public void setAnimatedButton(AnimatedButton clueButton) {
-        this.clueButton = clueButton;
-    }
 
     public void setView(GameV view) {
         this.view = view;
@@ -147,10 +140,34 @@ public class GameController {
     
     @FXML
     public void handleButtonClick(ActionEvent event) {
-        /*
-         * IMPLEMENTAR LOGICA DEL BOTON PISTA
-         */
+        int attempts = 0;
+        int maxAttempts = 100; 
+    
+        do {
+            int row = sudokuLogic.getRandomNumber(0, 5);
+            int column = sudokuLogic.getRandomNumber(0, 5);
+    
+            if (sudokuBoard.getCell(row, column) == 0) {
+                int value = sudokuLogic.getRandomNumber(1, 6);
+                sudokuBoard.setCell(row, column, value);
+                sudokuLogic.setBoard(sudokuBoard);
+    
+                if (sudokuLogic.verify(value, row, column) && sudokuLogic.verifyMiniBoard(value, row, column)) {
+                    cells[row][column].setText(String.valueOf(value));
+                    break;
+                } else {
+                    sudokuBoard.setCell(row, column, 0);
+                    sudokuLogic.setBoard(sudokuBoard);
+                }
+            }
+    
+            attempts++;
+            if (attempts >= maxAttempts) {
+                break; 
+            }
+    
+        } while (true);
     }
-
+    
 
 }

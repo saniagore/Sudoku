@@ -85,7 +85,6 @@ public class GameV extends Stage {
     }
 
     private void initController() {
-        gameController.setAnimatedButton(animatedButton);
         gameController.setView(this);
     }
 

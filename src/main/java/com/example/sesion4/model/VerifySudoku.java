@@ -53,20 +53,24 @@ public class VerifySudoku {
     }
 
     public boolean verifyMiniBoard(int value, int row, int colum) {
-        int submatrizFila = row / 2; 
-        int submatrizColumna = colum / 3; 
+        // Determinar la posición de la miniboard (2x3)
+        int submatrizFila = (row / 2) * 2; // Fila inicial de la miniboard
+        int submatrizColumna = (colum / 3) * 3; // Columna inicial de la miniboard
+    
         int count = 0;
-        for (int i = submatrizFila * 2; i < (submatrizFila * 2) + 2; i++) { 
-            for (int j = submatrizColumna * 3; j < (submatrizColumna * 3) + 3; j++) { 
+    
+        // Iterar sobre la miniboard (2 filas y 3 columnas)
+        for (int i = submatrizFila; i < submatrizFila + 2; i++) { // 2 filas
+            for (int j = submatrizColumna; j < submatrizColumna + 3; j++) { // 3 columnas
                 if (board.getCell(i, j) == value) {
                     count++;
                     if (count > 1) {
-                        return false;
+                        return false; // Si el valor aparece más de una vez, es inválido
                     }
                 }
             }
         }
-
-        return true;
+    
+        return true; 
     }
 }
