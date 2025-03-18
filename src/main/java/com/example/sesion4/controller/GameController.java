@@ -5,6 +5,10 @@ import com.example.sesion4.model.SudokuBoard;
 import com.example.sesion4.model.SudokuGenerator;
 import com.example.sesion4.model.SudokuLogic;
 import com.example.sesion4.model.VerifySudoku;
+import com.example.sesion4.view.AnimatedButton;
+import com.example.sesion4.view.GameV;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
@@ -48,8 +52,18 @@ public class GameController {
     @FXML private TextField cell35;
     @FXML private TextField cell36;
 
+    private AnimatedButton clueButton;
+    private GameV view;
+
     private SudokuLogic sudokuLogic;
     private SudokuBoard sudokuBoard;
+
+    public GameController(AnimatedButton clueButton, GameV view){
+        this.clueButton = clueButton;
+        this.view = view;
+    }
+    public GameController() {
+    }
 
     @FXML
     public void initialize() {
@@ -121,7 +135,22 @@ public class GameController {
             }
         }
     }
+    
+    public void setAnimatedButton(AnimatedButton clueButton) {
+        this.clueButton = clueButton;
+    }
+
+    public void setView(GameV view) {
+        this.view = view;
+    }
 
     
+    @FXML
+    public void handleButtonClick(ActionEvent event) {
+        /*
+         * IMPLEMENTAR LOGICA DEL BOTON PISTA
+         */
+    }
+
 
 }

@@ -15,28 +15,38 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 
 import java.io.IOException;
+
+import com.example.sesion4.controller.GameController;
+
 import javafx.scene.control.Button;
 
 public class GameV extends Stage {
-
+    
+    private GameController gameController;
     private Scene scene;
     private GridPane gridPane;
     private Pane rightPane;
     private Button clueButton;
+    private AnimatedButton animatedButton;
 
     public GameV() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sesion4/view/GameView.fxml"));
             Parent root = loader.load();
+
+            gameController = loader.getController();
+
             scene = new Scene(root);
             gridPane = (GridPane) scene.lookup("#gridPane");
             rightPane = (Pane) scene.lookup("#rightPane");
             clueButton = (Button) rightPane.lookup("#clueButton");
 
-            AnimatedButton animatedButton = new AnimatedButton(clueButton);
+            animatedButton = new AnimatedButton(clueButton);
             setBackgroundImage(gridPane, "/com/example/sesion4/bgsudoku.png");
             setBackgroundImage(rightPane, "/com/example/sesion4/bgright.jpg");
-            
+
+            initController();
+
             initStage();
         } catch (IOException e) {
             e.printStackTrace();
@@ -54,6 +64,7 @@ public class GameV extends Stage {
         }
         setScene(scene);
         show();
+        initController();
     }
 
     private void setBackgroundImage(Region region, String imagePath) {
@@ -73,7 +84,9 @@ public class GameV extends Stage {
         }
     }
 
-    public Button getClueButton(){
-        return clueButton;
+    private void initController() {
+        gameController.setAnimatedButton(animatedButton);
+        gameController.setView(this);
     }
+
 }
