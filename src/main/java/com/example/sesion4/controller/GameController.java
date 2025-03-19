@@ -52,7 +52,7 @@ public class GameController {
     @FXML private TextField cell36;
 
     private GameV view;
-
+    private String[][] cellColors = new String[6][6];
     private SudokuLogic sudokuLogic;
     private SudokuBoard sudokuBoard;
 
@@ -64,15 +64,14 @@ public class GameController {
 
     @FXML
     public void initialize() {
-    
         SudokuGenerator sudokuGenerator = new SudokuGenerator();
         VerifySudoku verifySudoku = new VerifySudoku();
-
+        initializeColors();
         initializeCellsMatrix();
         this.sudokuLogic = new SudokuAdapter(sudokuGenerator,verifySudoku);
         sudokuBoard = sudokuLogic.generateBoard();
 
-        initialTable();
+        viewUpdate(1);
     }
 
     private void initializeCellsMatrix() {
@@ -119,13 +118,27 @@ public class GameController {
         cells[5][5] = cell36;
     }
 
-    private void initialTable() {
+    private void viewUpdate(int color) {
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 6; j++) {
                 if (sudokuBoard.getCell(i, j) != 0) {
                     cells[i][j].setText(String.valueOf(sudokuBoard.getCell(i, j)));
-                    cells[i][j].setEditable(false); 
-                    cells[i][j].setStyle("-fx-control-inner-background: #ADD8E6;"); 
+                    cells[i][j].setEditable(false);
+    
+                    if (cellColors[i][j] == null) {
+                        switch(color) {
+                            case 1:
+                                cellColors[i][j] = "#ADD8E6";
+                                cells[i][j].setStyle("-fx-control-inner-background: " + cellColors[i][j] + ";");
+                                break;
+                            case 2:
+                                cellColors[i][j] = "#45f33f";
+                                cells[i][j].setStyle("-fx-control-inner-background: " + cellColors[i][j] + ";");
+                                break;
+                        }
+                    } else {
+                        cells[i][j].setStyle("-fx-control-inner-background: " + cellColors[i][j] + ";");
+                    }
                 } else {
                     cells[i][j].setText("");
                 }
@@ -140,34 +153,16 @@ public class GameController {
     
     @FXML
     public void handleButtonClick(ActionEvent event) {
-        int attempts = 0;
-        int maxAttempts = 100; 
-    
-        do {
-            int row = sudokuLogic.getRandomNumber(0, 5);
-            int column = sudokuLogic.getRandomNumber(0, 5);
-    
-            if (sudokuBoard.getCell(row, column) == 0) {
-                int value = sudokuLogic.getRandomNumber(1, 6);
-                sudokuBoard.setCell(row, column, value);
-                sudokuLogic.setBoard(sudokuBoard);
-    
-                if (sudokuLogic.verify(value, row, column) && sudokuLogic.verifyMiniBoard(value, row, column)) {
-                    cells[row][column].setText(String.valueOf(value));
-                    break;
-                } else {
-                    sudokuBoard.setCell(row, column, 0);
-                    sudokuLogic.setBoard(sudokuBoard);
-                }
-            }
-    
-            attempts++;
-            if (attempts >= maxAttempts) {
-                break; 
-            }
-    
-        } while (true);
-    }
-    
+        sudokuBoard = sudokuLogic.randomClue();
+        viewUpdate(2);
 
+    }
+
+    public void initializeColors(){
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 6; j++) {
+                cellColors[i][j] = null; // Inicializar todos los colores como nulos
+            }
+        }
+    }
 }

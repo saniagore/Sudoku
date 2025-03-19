@@ -7,7 +7,7 @@ public class SudokuAdapter implements SudokuLogic {
 
     // Constructor para inicializar las dependencias
     public SudokuAdapter(SudokuGenerator sudokuGenerator, VerifySudoku verifySudoku) {
-        SudokuBoard board = new SudokuBoard();
+        this.board = new SudokuBoard();
         this.sudokuGenerator = sudokuGenerator;
         this.verifySudoku = verifySudoku;
     }
@@ -35,5 +35,10 @@ public class SudokuAdapter implements SudokuLogic {
     @Override
     public void setBoard(SudokuBoard board){
         this.board = board;
+    }
+
+    @Override
+    public SudokuBoard randomClue(){
+        return sudokuGenerator.randomClue();
     }
 }

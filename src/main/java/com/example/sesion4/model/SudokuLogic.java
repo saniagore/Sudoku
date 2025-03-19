@@ -10,5 +10,7 @@ public interface SudokuLogic {
 
     boolean verifyMiniBoard(int value, int row, int colum);
 
+    SudokuBoard randomClue();
+
     void setBoard(SudokuBoard board);
 }
