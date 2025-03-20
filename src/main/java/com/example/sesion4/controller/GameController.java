@@ -1,8 +1,6 @@
 package com.example.sesion4.controller;
 
-import com.example.sesion4.model.Listener.CellInfo;
 import com.example.sesion4.model.Listener;
-
 import com.example.sesion4.model.SudokuAdapter;
 import com.example.sesion4.model.SudokuBoard;
 import com.example.sesion4.model.SudokuGenerator;
@@ -122,6 +120,7 @@ public class GameController {
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 6; j++) {
                 if (cells[i][j] != null) {
+                    Listener.CellInfo cellInfo = new Listener.CellInfo(cells[i][j], i, j);
                     Listener.addTextListener(cellInfo);
                 }
             }
