@@ -34,11 +34,16 @@ public class SudokuAdapter implements SudokuLogic {
 
     @Override
     public void setBoard(SudokuBoard board){
-        this.board = board;
+        verifySudoku.setBoard(board);
     }
 
     @Override
     public SudokuBoard randomClue(){
         return sudokuGenerator.randomClue();
+    }
+
+    @Override
+    public void setCell(int row, int col, int value){
+        verifySudoku.setCell(row, col, value);
     }
 }

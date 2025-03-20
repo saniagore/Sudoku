@@ -69,4 +69,8 @@ public class VerifySudoku {
     
         return true; 
     }
+
+    public void setCell(int row, int col, int value){
+        board.setCell(row, col, value);
+    }
 }

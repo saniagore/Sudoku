@@ -13,4 +13,6 @@ public interface SudokuLogic {
     SudokuBoard randomClue();
 
     void setBoard(SudokuBoard board);
+
+    void setCell(int row, int col, int value);
 }
