@@ -9,7 +9,6 @@ import com.example.sesion4.model.VerifySudoku;
 import com.example.sesion4.view.GameV;
 import com.example.sesion4.view.PopupWindow;
 
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -50,9 +49,34 @@ public class GameController {
                 cells[i][j] = (TextField) sudokuGrid.lookup("#" + cellId);
                 if (cells[i][j] != null) {
                     cellInfos[i][j] = new Listener.CellInfo(cells[i][j], i, j);
-                    Listener.addTextListener(cellInfos[i][j]);
+                    Listener.addTextListener(cellInfos[i][j], this::handleCellTextChange);
                 }
                 contador++;
+            }
+        }
+    }
+
+
+    private void handleCellTextChange(Listener.CellInfo cellInfo, String oldValue, String newValue) {
+        if(newValue.isEmpty()) {
+            cells[cellInfo.row][cellInfo.col].setStyle("-fx-control-inner-background: white;");
+            sudokuBoard.setCell(cellInfo.row, cellInfo.col, 0);
+        }
+        else if (!newValue.matches("[1-6]?")) {
+            cellInfo.textField.setText(oldValue);
+            PopupWindow.Window("Error!", "Solamente puede ingresar numeros del 1 al 6");
+        } 
+        else {
+            int value = Integer.parseInt(newValue);
+            sudokuBoard.setCell(cellInfo.row, cellInfo.col, value);
+    
+            sudokuLogic.setBoard(sudokuBoard);
+            if(!sudokuLogic.verify(value, cellInfo.row, cellInfo.col) || 
+               !sudokuLogic.verifyMiniBoard(value, cellInfo.row, cellInfo.col)) {
+                // implementar logica para que revise todas las celdas y asi si el usuario mete dos repetidas marque mal la que ingreso primeor tambine
+                cells[cellInfo.row][cellInfo.col].setStyle("-fx-control-inner-background: rgb(247, 144, 116);");
+            } else {
+                cells[cellInfo.row][cellInfo.col].setStyle("-fx-control-inner-background: white;");
             }
         }
     }
@@ -71,6 +95,8 @@ public class GameController {
         }
     }
 
+
+
     public void setView(GameV view) {
         this.view = view;
     }
@@ -79,7 +105,9 @@ public class GameController {
     public void handleButtonClick(ActionEvent event) {
         sudokuLogic.setBoard(sudokuBoard);
         sudokuBoard = sudokuLogic.randomClue();
+
     
     }
 
+    
 }

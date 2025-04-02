@@ -3,31 +3,39 @@ package com.example.sesion4.model;
 import javafx.scene.control.TextField;
 
 public class Listener {
-    public static void addTextListener(CellInfo cellInfo) {
+
+    public interface TextChangeCallback {
+        void onTextChanged(CellInfo cellInfo, String oldValue, String newValue);
+    }
+
+    public static void addTextListener(CellInfo cellInfo, TextChangeCallback callback) {
         cellInfo.textField.textProperty().addListener((observable, oldValue, newValue) -> {
-            /*
-             * logica a implementar
-             */
-
-
+            callback.onTextChanged(cellInfo, oldValue, newValue);
         });
     }
+
 
     public static class CellInfo {
         public final TextField textField;
         public final int row;
         public final int col;
         public boolean isClue;
+        public boolean isValid;
 
         public CellInfo(TextField textField, int row, int col) {
             this.textField = textField;
             this.row = row;
             this.col = col;
             this.isClue = false;
+            this.isValid = true;
         }
 
         public void setIsClue(){
             isClue = true;
+        }
+
+        public void setIsValid(boolean isValid) {
+            this.isValid = isValid;
         }
     }
 
