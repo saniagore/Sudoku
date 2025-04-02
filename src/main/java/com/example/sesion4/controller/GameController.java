@@ -16,6 +16,7 @@ import javafx.scene.control.TextField;
 
 public class GameController {
     private TextField[][] cells = new TextField[6][6];
+    private Listener.CellInfo[][] cellInfos = new Listener.CellInfo[6][6];
 
     @FXML private TextField cell1;
     @FXML private TextField cell2;
@@ -81,7 +82,6 @@ public class GameController {
         cells[1][0] = cell3;
         cells[1][1] = cell4;
         cells[1][2] = cell9;
-
         cells[0][3] = cell8;
         cells[0][4] = cell13;
         cells[0][5] = cell14;
@@ -133,7 +133,8 @@ public class GameController {
                 if (sudokuBoard.getCell(i, j) != 0) {
                     cells[i][j].setText(String.valueOf(sudokuBoard.getCell(i, j)));
                     cells[i][j].setStyle("-fx-control-inner-background:  #ADD8E6  ;");
-                    cells[i][j].setEditable(false);
+
+                    //cells[i][j].setEditable(false);
                 } else {
                     cells[i][j].setText("");
                 }
@@ -148,7 +149,10 @@ public class GameController {
 
     @FXML
     public void handleButtonClick(ActionEvent event) {
+
+        sudokuLogic.setBoard(sudokuBoard);
         sudokuBoard = sudokuLogic.randomClue();
+    
     }
 
 

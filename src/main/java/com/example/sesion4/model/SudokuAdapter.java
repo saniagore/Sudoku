@@ -5,7 +5,6 @@ public class SudokuAdapter implements SudokuLogic {
     private SudokuGenerator sudokuGenerator;
     private VerifySudoku verifySudoku;
 
-    // Constructor para inicializar las dependencias
     public SudokuAdapter(SudokuGenerator sudokuGenerator, VerifySudoku verifySudoku) {
         this.board = new SudokuBoard();
         this.sudokuGenerator = sudokuGenerator;
