@@ -11,7 +11,7 @@
 
 <BorderPane prefHeight="377.0" prefWidth="549.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sesion4.controller.GameController">
    <center>
-      <GridPane fx:id="gridPane" prefHeight="360.0" prefWidth="505.0" BorderPane.alignment="CENTER">
+      <GridPane fx:id="sudokuGrid" prefHeight="360.0" prefWidth="505.0" BorderPane.alignment="CENTER">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -39,33 +39,33 @@
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField fx:id="cell7" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.columnIndex="2">
+            <TextField fx:id="cell3" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.columnIndex="2">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField fx:id="cell8" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.columnIndex="3">
+            <TextField fx:id="cell4" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.columnIndex="3">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField fx:id="cell13" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.columnIndex="4">
+            <TextField fx:id="cell5" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.columnIndex="4">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField fx:id="cell14" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="100.0" GridPane.columnIndex="5">
+            <TextField fx:id="cell6" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="100.0" GridPane.columnIndex="5">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
 
-            <TextField fx:id="cell3" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.rowIndex="1">
+            <TextField fx:id="cell7" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.rowIndex="1">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField fx:id="cell4" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <TextField fx:id="cell8" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font size="25.0" />
                </font>
@@ -80,33 +80,33 @@
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField fx:id="cell15" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
+            <TextField fx:id="cell11" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField fx:id="cell16" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.columnIndex="5" GridPane.rowIndex="1">
+            <TextField fx:id="cell12" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.columnIndex="5" GridPane.rowIndex="1">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
 
-            <TextField fx:id="cell5" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.rowIndex="2">
+            <TextField fx:id="cell13" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.rowIndex="2">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField fx:id="cell6" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <TextField fx:id="cell14" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField fx:id="cell11" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <TextField fx:id="cell15" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField fx:id="cell12" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+            <TextField fx:id="cell16" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
                <font>
                   <Font size="25.0" />
                </font>
@@ -132,33 +132,33 @@
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField fx:id="cell25" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <TextField fx:id="cell21" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField fx:id="cell26" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
+            <TextField fx:id="cell22" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField fx:id="cell31" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.columnIndex="4" GridPane.rowIndex="3">
+            <TextField fx:id="cell23" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.columnIndex="4" GridPane.rowIndex="3">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField fx:id="cell32" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.columnIndex="5" GridPane.rowIndex="3">
+            <TextField fx:id="cell24" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.columnIndex="5" GridPane.rowIndex="3">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
 
-            <TextField fx:id="cell21" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.rowIndex="4">
+            <TextField fx:id="cell25" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.rowIndex="4">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField fx:id="cell22" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <TextField fx:id="cell26" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <font>
                   <Font size="25.0" />
                </font>
@@ -173,33 +173,33 @@
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField fx:id="cell33" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.columnIndex="4" GridPane.rowIndex="4">
+            <TextField fx:id="cell29" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.columnIndex="4" GridPane.rowIndex="4">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField fx:id="cell34" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.columnIndex="5" GridPane.rowIndex="4">
+            <TextField fx:id="cell30" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.columnIndex="5" GridPane.rowIndex="4">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
 
-            <TextField fx:id="cell23" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.rowIndex="5">
+            <TextField fx:id="cell31" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.rowIndex="5">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField fx:id="cell24" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <TextField fx:id="cell32" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField fx:id="cell29" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
+            <TextField fx:id="cell33" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
                <font>
                   <Font size="25.0" />
                </font>
             </TextField>
-            <TextField fx:id="cell30" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.columnIndex="3" GridPane.rowIndex="5">
+            <TextField fx:id="cell34" alignment="CENTER" maxWidth="70.0" prefHeight="50.0" prefWidth="90.0" GridPane.columnIndex="3" GridPane.rowIndex="5">
                <font>
                   <Font size="25.0" />
                </font>
@@ -220,7 +220,7 @@
    <right>
       <Pane fx:id="rightPane" prefHeight="377.0" prefWidth="71.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="clueButton" layoutX="9.0" layoutY="314.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="53.0" text="Pista"  onAction="#handleButtonClick" />
+            <Button fx:id="clueButton" layoutX="9.0" layoutY="314.0" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="49.0" prefWidth="53.0" text="Pista" />
          </children>
       </Pane>
    </right>
