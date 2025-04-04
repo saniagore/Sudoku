@@ -40,7 +40,6 @@ public class GameController {
         initializeCellsMatrix();
         viewUpdateInit();
     }
-
     private void initializeCellsMatrix() {
         int contador = 1;
         for (int i = 0; i < 6; i++) {
@@ -55,38 +54,48 @@ public class GameController {
             }
         }
     }
-
-
     private void handleCellTextChange(Listener.CellInfo cellInfo, String oldValue, String newValue) {
-        if(newValue.isEmpty()) {
+        if (newValue.isEmpty()) {
             cells[cellInfo.row][cellInfo.col].setStyle("-fx-control-inner-background: white;");
             sudokuBoard.setCell(cellInfo.row, cellInfo.col, 0);
-        }
-        else if (!newValue.matches("[1-6]?")) {
+            verifyAllCells();
+        } else if (!newValue.matches("[1-6]?")) {
             cellInfo.textField.setText(oldValue);
             PopupWindow.Window("Error!", "Solamente puede ingresar numeros del 1 al 6");
-        } 
-        else {
+        } else {
             int value = Integer.parseInt(newValue);
             sudokuBoard.setCell(cellInfo.row, cellInfo.col, value);
-    
-            sudokuLogic.setBoard(sudokuBoard);
-            if(!sudokuLogic.verify(value, cellInfo.row, cellInfo.col) || 
-               !sudokuLogic.verifyMiniBoard(value, cellInfo.row, cellInfo.col)) {
-                // implementar logica para que revise todas las celdas y asi si el usuario mete dos repetidas marque mal la que ingreso primeor tambine
-                cells[cellInfo.row][cellInfo.col].setStyle("-fx-control-inner-background: rgb(247, 144, 116);");
-            } else {
-                cells[cellInfo.row][cellInfo.col].setStyle("-fx-control-inner-background: white;");
+            verifyAllCells();
+        }
+    }
+    private void verifyAllCells() {
+        sudokuLogic.setBoard(sudokuBoard);
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 6; j++) {
+                if (!cellInfos[i][j].isClue) { 
+                    int cellValue = sudokuBoard.getCell(i, j);
+                    if (cellValue != 0) {
+                        boolean isValid = sudokuLogic.verify(cellValue, i, j) && 
+                                           sudokuLogic.verifyMiniBoard(cellValue, i, j);
+                        
+                        if (!isValid) {
+                            cells[i][j].setStyle("-fx-control-inner-background: rgb(247, 144, 116);");
+                        } else {
+                            cells[i][j].setStyle("-fx-control-inner-background: white;");
+                        }
+                    } else {
+                        cells[i][j].setStyle("-fx-control-inner-background: white;");
+                    }
+                }
             }
         }
     }
-
     private void viewUpdateInit() {
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 6; j++) {
                 if (sudokuBoard.getCell(i, j) != 0) {
                     cells[i][j].setText(String.valueOf(sudokuBoard.getCell(i, j)));
-                    cells[i][j].setStyle("-fx-control-inner-background:  #ADD8E6  ;");
+                    cells[i][j].setStyle("-fx-control-inner-background:rgb(202, 226, 235)  ;");
                     Listener.removeTextListener(cellInfos[i][j]);
                 } else {
                     cells[i][j].setText("");
@@ -94,20 +103,22 @@ public class GameController {
             }
         }
     }
-
-
-
     public void setView(GameV view) {
         this.view = view;
     }
-
     @FXML
     public void handleButtonClick(ActionEvent event) {
         sudokuLogic.setBoard(sudokuBoard);
         sudokuBoard = sudokuLogic.randomClue();
 
-    
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 6; j++) {
+                if (sudokuBoard.getCell(i, j) != 0) {
+                    cells[i][j].setText(String.valueOf(sudokuBoard.getCell(i, j)));
+                } else {
+                    cells[i][j].setText("");
+                }
+            }
+        }
     }
-
-    
 }
