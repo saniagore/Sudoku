@@ -20,6 +20,15 @@ import com.example.sesion4.controller.GameController;
 
 import javafx.scene.control.Button;
 
+/**
+ * The GameV class represents the main game view window for the Sudoku application.
+ * It extends JavaFX's Stage class and handles the initialization and display of
+ * the game interface, including background images and controller setup.
+ * 
+ * @author Santiago Vanegas Torres
+ * @version 1.0
+ * @since 1.0
+ */
 public class GameV extends Stage {
     
     private GameController gameController;
@@ -27,8 +36,14 @@ public class GameV extends Stage {
     private GridPane gridPane;
     private Pane rightPane;
     private Button clueButton;
+    @SuppressWarnings("unused")
     private AnimatedButton animatedButton;
 
+    /**
+     * Constructs a new GameV (Game View) window.
+     * Loads the FXML layout, initializes UI components, sets up background images,
+     * and configures the game controller.
+     */
     public GameV() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sesion4/view/GameView.fxml"));
@@ -53,6 +68,10 @@ public class GameV extends Stage {
         }
     }
 
+    /**
+     * Initializes and configures the stage properties.
+     * Sets the window title, icon, and makes the window non-resizable.
+     */
     private void initStage() {
         setTitle("Sudoku");
         setResizable(false);
@@ -61,15 +80,21 @@ public class GameV extends Stage {
             Image icon = new Image(getClass().getResource(iconPath).toExternalForm());
             getIcons().add(icon);
         } catch (NullPointerException e) {
+            // Icon loading failed, continue without it
         }
         setScene(scene);
         show();
         initController();
     }
 
+    /**
+     * Sets a background image for the specified region.
+     * 
+     * @param region The JavaFX region (Pane, GridPane, etc.) to set the background on
+     * @param imagePath The path to the image resource to use as background
+     */
     private void setBackgroundImage(Region region, String imagePath) {
         try {
-
             Image image = new Image(getClass().getResource(imagePath).toExternalForm());
             BackgroundImage backgroundImage = new BackgroundImage(
                     image,
@@ -81,11 +106,14 @@ public class GameV extends Stage {
             Background background = new Background(backgroundImage);
             region.setBackground(background);
         } catch (NullPointerException e) {
+            // Background image loading failed, continue without it
         }
     }
 
+    /**
+     * Initializes the connection between this view and its controller.
+     */
     private void initController() {
         gameController.setView(this);
     }
-
 }
