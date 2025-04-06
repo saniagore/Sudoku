@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"com.example.sesion4.view","l":"AnimatedButton"},{"p":"com.example.sesion4.view","l":"GameV"},{"p":"com.example.sesion4.view","l":"PopupWindow"}];updateSearchResults();
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"com.example.sesion4.controller","l":"GameController"}];updateSearchResults();

@@ -102,6 +102,41 @@ public class GameController {
             sudokuBoard.setCell(cellInfo.row, cellInfo.col, value);
             verifyAllCells();
         }
+
+        if(verifyWin()){
+            PopupWindow.Window("Felicitaciones!", "Ha ganado, ha completado el sudoku!");
+            view.close();
+        }
+    }
+
+    /**
+     * Verifies if the game is won by checking if all cells are filled correctly.
+     * This method is currently a placeholder and does not implement any logic.
+     */
+    private boolean verifyWin(){
+
+        sudokuLogic.setBoard(sudokuBoard);
+
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 6; j++) {
+                if (!cellInfos[i][j].isClue) {
+                    int cellValue = sudokuBoard.getCell(i, j);
+                    if (cellValue < 1 || cellValue > 6) {
+                        return false;
+                    }
+                }
+            }
+        }        
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 6; j++) {
+                int cellValue = sudokuBoard.getCell(i, j);
+                if (!sudokuLogic.verify(cellValue, i, j) || 
+                    !sudokuLogic.verifyMiniBoard(cellValue, i, j)) {
+                    return false;
+                }
+            }
+        }
+        return true; 
     }
 
     /**
