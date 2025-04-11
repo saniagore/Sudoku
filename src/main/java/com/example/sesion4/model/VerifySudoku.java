@@ -37,6 +37,10 @@ public class VerifySudoku {
         if(counter(value, rowValues)>=2 || counter(value, columnValues)>=2){
             return false;
         }
+        if(!verifyMiniBoard(value, row, colum)){
+            return false;
+        }
+        
         return true;
     }
 

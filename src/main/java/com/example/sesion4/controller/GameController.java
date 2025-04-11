@@ -130,8 +130,7 @@ public class GameController {
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 6; j++) {
                 int cellValue = sudokuBoard.getCell(i, j);
-                if (!sudokuLogic.verify(cellValue, i, j) || 
-                    !sudokuLogic.verifyMiniBoard(cellValue, i, j)) {
+                if (!sudokuLogic.verify(cellValue, i, j)) {
                     return false;
                 }
             }
@@ -150,8 +149,7 @@ public class GameController {
                 if (!cellInfos[i][j].isClue) { 
                     int cellValue = sudokuBoard.getCell(i, j);
                     if (cellValue != 0) {
-                        boolean isValid = sudokuLogic.verify(cellValue, i, j) && 
-                                         sudokuLogic.verifyMiniBoard(cellValue, i, j);
+                        boolean isValid = sudokuLogic.verify(cellValue, i, j);
                         
                         if (!isValid) {
                             cells[i][j].setStyle("-fx-control-inner-background: rgb(247, 144, 116);");

@@ -18,14 +18,7 @@ public interface SudokuLogic {
      */
     SudokuBoard generateBoard();
 
-    /**
-     * Generates a random number within the specified range.
-     * 
-     * @param min The minimum value (inclusive)
-     * @param max The maximum value (inclusive)
-     * @return A random number between min and max
-     */
-    int getRandomNumber(int min, int max);
+
 
     /**
      * Verifies if a value can be placed at the specified position according to Sudoku rules.
@@ -37,16 +30,6 @@ public interface SudokuLogic {
      * @return true if the placement is valid, false if it violates Sudoku rules
      */
     boolean verify(int value, int row, int column);
-
-    /**
-     * Verifies if a value can be placed in the 2x3 sub-matrix according to Sudoku rules.
-     * 
-     * @param value The number to verify (1-6)
-     * @param row The row index (0-5)
-     * @param column The column index (0-5)
-     * @return true if the placement is valid in the sub-matrix, false if it violates Sudoku rules
-     */
-    boolean verifyMiniBoard(int value, int row, int column);
 
     /**
      * Provides a random clue (pre-filled cell) for the current board.

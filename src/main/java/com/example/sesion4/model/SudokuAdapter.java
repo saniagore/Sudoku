@@ -30,19 +30,6 @@ public class SudokuAdapter implements SudokuLogic {
     }
 
     /**
-     * Generates a random number within the specified range.
-     * Delegates to the SudokuGenerator implementation.
-     * 
-     * @param min The minimum value (inclusive)
-     * @param max The maximum value (inclusive)
-     * @return A random number between min and max
-     */
-    @Override
-    public int getRandomNumber(int min, int max) {
-        return sudokuGenerator.getRandomNumber(min, max);
-    }
-
-    /**
      * Generates a new valid Sudoku board.
      * Delegates to the SudokuGenerator implementation.
      * 
@@ -65,20 +52,6 @@ public class SudokuAdapter implements SudokuLogic {
     @Override
     public boolean verify(int value, int row, int column) {
         return verifySudoku.verify(value, row, column);
-    }
-
-    /**
-     * Verifies if a value can be placed in the 2x3 sub-matrix.
-     * Delegates to the VerifySudoku implementation.
-     * 
-     * @param value The number to verify (1-6)
-     * @param row The row index (0-5)
-     * @param column The column index (0-5)
-     * @return true if the placement is valid in the sub-matrix, false otherwise
-     */
-    @Override
-    public boolean verifyMiniBoard(int value, int row, int column) {
-        return verifySudoku.verifyMiniBoard(value, row, column);
     }
 
     /**

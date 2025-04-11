@@ -66,9 +66,7 @@ public class SudokuGenerator {
                             if(verify.verify(value, row, colum) && verify.verifyMiniBoard(value, row, colum)){
                                 break;
                             }else{
-                                board.setCell(row, colum, 0);
-                                verify.setBoard(board);
-                                counter++;
+                                board.setCell(row, colum, 0);verify.setBoard(board);counter++;
                             }
                         }
                         if (counter >100){
@@ -109,9 +107,7 @@ public class SudokuGenerator {
                     do{
                         row = getRandomNumber(j*2, j*2+1);
                         colum = getRandomNumber(i*3,i*3+2);
-                        if(board.getCell(row, colum)!=0){
-                            board.setCell(row, colum, 0);
-                            break;
+                        if(board.getCell(row, colum)!=0){board.setCell(row, colum, 0);break;
                         }
                     }while(true);
                 }
@@ -156,14 +152,11 @@ public class SudokuGenerator {
             if(board.getCell(row, colum)==0){
                 value = fullSudokuBoard.getCell(row, colum);
                 board.setCell(row, colum, value);
-                break;
+                verify.setBoard(board);
+                if(verify.verify(value, row, colum) && verify.verifyMiniBoard(value, row, colum)){break;}else{board.setCell(row, colum, 0);verify.setBoard(board);counter++;}
             }else{
-                counter++;
-                if(counter > 100){
-                    break;
-                }
+                counter++;if(counter > 100){break;}
             }
-            
         }while(true);
         return board;
     }
